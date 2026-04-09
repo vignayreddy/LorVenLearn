@@ -5,7 +5,7 @@
 
 This contains everything you need to run your app locally.
 
-View your app in LorvenLearn: https://ai.studio/apps/371bd5a3-f7f5-47f8-b691-2c68455fa731
+View your app in LorvenLearn: https://gen-lang-client-0193065118.web.app/
 
 ## Run Locally
 
