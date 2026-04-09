@@ -6,3 +6,12 @@ coverage/
 *.log
 .env*
 !.env.example
+# حساس files (secrets)
+serviceAccountKey.json
+*.env
+*.env.json
+
+# Optional: ignore all json except package files
+*.json
+!package.json
+!package-lock.json
