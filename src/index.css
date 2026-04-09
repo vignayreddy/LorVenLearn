@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+@theme {
+  --font-sans: "Outfit", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-primary: var(--color-zinc-900);
+  --color-accent: var(--color-amber-600);
+  --color-surface: var(--color-slate-50);
+  --color-background: #FAF9F6; /* Premium off-white */
+  
+  --shadow-premium: 0 10px 40px -10px rgba(0,0,0,0.06);
+  --shadow-premium-hover: 0 20px 40px -10px rgba(0,0,0,0.1);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--color-background)] text-zinc-800 antialiased font-sans selection:bg-amber-200 selection:text-amber-900 overflow-x-hidden text-[16px] leading-relaxed relative;
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(33, 100%, 95%, 1) 0, transparent 50%), 
+      radial-gradient(at 100% 0%, hsla(210, 50%, 98%, 1) 0, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-zinc-900 mb-3;
+  }
+  h1 { @apply text-4xl md:text-6xl font-bold; letter-spacing: -0.03em; }
+  h2 { @apply text-3xl md:text-5xl font-bold; letter-spacing: -0.02em; }
+  h3 { @apply text-2xl md:text-3xl font-semibold; letter-spacing: -0.01em; }
+}
+
+@layer utilities {
+  .container-centered {
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+  
+  /* Beautiful Glassmorphism */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/80 shadow-[var(--shadow-glass)] transition-all duration-500 rounded-3xl;
+  }
+  
+  /* Premium Buttons */
+  .btn-primary {
+    @apply relative overflow-hidden bg-zinc-950 text-white px-7 py-3.5 rounded-2xl font-medium tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 transform active:scale-[0.98] flex items-center justify-center gap-2;
+  }
+  .btn-primary::before {
+    content: "";
+    @apply absolute inset-0 bg-white/10 opacity-0 transition-opacity duration-300;
+  }
+  .btn-primary:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-outline {
+    @apply bg-white border border-zinc-200/80 text-zinc-700 px-7 py-3.5 rounded-2xl font-medium tracking-wide shadow-sm hover:shadow-md hover:bg-zinc-50 transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[var(--shadow-premium-hover)];
+  }
+
+  /* Elegant Gradients */
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-zinc-900 via-zinc-700 to-zinc-800;
+  }
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-600 via-orange-500 to-rose-400;
+  }
+
+  /* Dynamic Cards */
+  .premium-card {
+    @apply bg-white rounded-3xl border border-zinc-100/80 shadow-[var(--shadow-premium)] transition-all duration-500;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes gentle-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(0.99); }
+}
+
+.pulse-soft {
+  animation: gentle-pulse 4s ease-in-out infinite;
+}
